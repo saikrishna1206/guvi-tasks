@@ -1,0 +1,269 @@
+A)Print odd numbers in an array
+anonymous  :  function(array){
+                  for(var i = 0 ; i< array.length ; i++){
+                        if(array[i]%2!=0){
+                           console.log(array[i])
+                        } 
+                   }
+                }
+IIFE :       (function(array){
+             for(var i = 0 ; i< array.length ; i++){
+                        if(array[i]%2!=0){
+                           console.log(array[i])
+                        } 
+                   }
+             })([1,2,3,4])
+             
+Arrow Function    oddNumbers = (array) => {
+                   for(var i = 0 ; i< array.length ; i++){
+                        if(array[i]%2!=0){
+                           console.log(array[i])
+                        } 
+                   }
+                        }
+                        
+ B)Convert all the strings to title caps in a string array
+   
+ anonymous :   function (str) {
+                    str = str.toLowerCase().split(' ');
+                    for (var i = 0; i < str.length; i++) {
+                      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+                    } 
+                    return str.join(' ');
+                  }
+IIFE : (function (str) {
+                    str = str.toLowerCase().split(' ');
+                    for (var i = 0; i < str.length; i++) {
+                      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+                    } 
+                    return str.join(' ');
+                  })("MUDRA IS MY NAME");
+ Arrow Function : titleCase = (str) => {
+                    str = str.toLowerCase().split(' ');
+                    for (var i = 0; i < str.length; i++) {
+                      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+                    } 
+                    return str.join(' ');
+                  }            
+C)Sum of all numbers in an array 
+anonymous  :  function(array){
+                  var sum = 0;
+                  for(var i = 0 ; i< array.length ; i++){
+                     sum = sum + array[i];
+                   }
+                   return sum;
+                }
+IIFE :       (function(array){
+             var sum = 0;
+                  for(var i = 0 ; i< array.length ; i++){
+                     sum = sum + array[i];
+                   }
+                   return sum;
+             })([1,2,3,4])
+Arrow:       sum = (array)=>{
+             var sum = 0;
+                  for(var i = 0 ; i< array.length ; i++){
+                     sum = sum + array[i];
+                   }
+                   return sum;
+                   }
+D)Return all the prime numbers in an array
+    Anonymous Function:
+                 function(numArray){
+                      numArray = numArray.filter((number) => {
+                        for (var i = 2; i <= Math.sqrt(number); i++) {
+                          if (number % i === 0) return false;
+                        }
+                        return true;
+                      });
+                      console.log(numArray);
+                  }
+   IIFE 
+                   (  
+                   function(numArray){
+                      numArray = numArray.filter((number) => {
+                        for (var i = 2; i <= Math.sqrt(number); i++) {
+                          if (number % i === 0) return false;
+                        }
+                        return true;
+                      });
+                      console.log(numArray);
+                  })([1,2,3,4])
+    Arrow Function :
+    
+       primeNumber = (numArray) => {
+                      numArray = numArray.filter((number) => {
+                        for (var i = 2; i <= Math.sqrt(number); i++) {
+                          if (number % i === 0) return false;
+                        }
+                        return true;
+                      });
+                      console.log(numArray);
+                  }
+                  
+E)  Return all the palindromes in an array
+
+function isPalindrome(N)
+    {
+        let str = "" + N;
+        let len = str.length;
+        for (let i = 0; i < parseInt(len / 2, 10); i++)
+        {
+            if (str[i] != str[len - 1 - i ])
+                return false;
+        }
+        return true;
+    }
+    
+  Anonymous Function :  function (arr, n)
+    {
+        // Traversing each element of the array
+        // and check if it is palindrome or not
+        for (let i = 0; i < n; i++)
+        {
+            let ans = isPalindrome(arr[i]);
+            if (ans == false)
+                return false;
+        }
+        return true;
+    }
+    
+    IIFE : 
+
+              (  function (arr, n)
+        {
+            // Traversing each element of the array
+            // and check if it is palindrome or not
+            for (let i = 0; i < n; i++)
+            {
+                let ans = isPalindrome(arr[i]);
+                if (ans == false)
+                    return false;
+            }
+            return true;
+        })([1,2,3] , 3)
+
+Arrow : 
+Palindrome = (arr, n) =>
+    {
+        // Traversing each element of the array
+        // and check if it is palindrome or not
+        for (let i = 0; i < n; i++)
+        {
+            let ans = isPalindrome(arr[i]);
+            if (ans == false)
+                return false;
+        }
+        return true;
+    }
+F)Return median of two sorted arrays of same size
+1.Counting While Comparing 
+float getMedian(int num1[], int num2[], int size) { 
+   int i = 0
+   int j = 0
+   int m1 = -1, m2 = -1 
+   for (count = 0 to size) {
+      if (i == size) {
+         m1 = m2
+         m2 = num2[0]
+         break
+      } 
+      else if (j == size) {
+         m1 = m2
+         m2 = num1[0]
+         break
+      } 
+      if (num1[i] < num2[j]) { 
+         m1 = m2
+         m2 = num1[i] 
+         i = i + 1
+      } else { 
+         m1 = m2
+         m2 = num2[j]
+         j = j + 1
+      }
+   }
+   return (m1 + m2)/2
+}
+
+2.Comparing medians
+float getMedian(int num1[], int num2[], int size) { 
+   // base cases
+   if (size <= 0)
+      return -1
+   if (size == 1)
+      return (num1[0] + num2[0]) / 2
+   if (size == 2)
+      return (max(num1[0], num2[0]) + min(num1[1], num2[1])) / 2
+   int med1 = median(num1, size)
+   int med2 = median(num2, size)
+   // compare the medians
+   if (med1 == med2)
+      return med1 
+   if (med1 < med2) {
+      // recurse for the subarray num1[m1 to size] and num2[0 to m2]
+      if (size % 2 == 0)
+         return getMedian(num1 + size/2 - 1, num2, size - size/2 + 1)
+      else
+         return getMedian(num1 + size / 2, num2, size - size / 2)
+   } else {
+      // recurse for the subarray num1[0 to m1] and num2[m2 to n]
+      if (size % 2 == 0)
+         return getMedian(num2 + size / 2 - 1, num1, size - size / 2 + 1) 
+      else
+         return getMedian(num2 + size / 2, num1, size - size / 2) 
+}
+
+// Utility function to find median of array
+int median(int arr[], int array_size) { 
+   if (array_size % 2 == 0)
+      return (arr[array_size / 2] + arr[array_size / 2 - 1]) / 2
+   else
+      return arr[array_size / 2]
+}
+
+G)Remove duplicates from an Array
+Anonymous Function : function(array){
+                        let dup = [...new Set(array)];
+                        console.log(dup);
+                      }
+IIFE :                (function(array){
+                        let dup = [...new Set(array)];
+                        console.log(dup);
+                       })([1,1,2,3,4])
+                       
+
+H)Rotate an array by K times
+
+function reverse(array , li , ri){
+ while(li < ri){
+      int temp = a[li];
+      a[li]= a[ri];
+      a[ri] = temp;
+      
+      li++;
+      ri--;
+    }
+}
+Anonymous function : function(array , k){
+                          k = k % a.length;
+                            if(k < 0){
+                              k += a.length;
+                            }
+
+                            reverse(a, 0, a.length - k - 1);
+                            reverse(a, a.length - k, a.length - 1);
+                            reverse(a, 0, a.length - 1);
+                          }
+                          
+   IIFE :   (function(array , k){
+                          k = k % a.length;
+                            if(k < 0){
+                              k += a.length;
+                            }
+
+                            reverse(a, 0, a.length - k - 1);
+                            reverse(a, a.length - k, a.length - 1);
+                            reverse(a, 0, a.length - 1);
+                          })([1,2,3,4] , 2)
+        
